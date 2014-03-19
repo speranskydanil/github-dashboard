@@ -1,0 +1,479 @@
+!!!
+
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
+
+    %title GitHub Dashboard
+
+    %link{href: "css/bootstrap.css", rel: "stylesheet"}
+
+    :sass
+      form
+        margin-bottom: 20px
+        padding: 12px 20px 10px
+        background: #eee
+
+      .form-group
+        margin-right: 15px
+
+      .form-control
+        height: 26px
+        margin-left: 5px
+        padding: 2px 10px
+
+      .language
+        max-width: 140px
+
+      .page
+        max-width: 60px
+
+      .spinner
+        display: block
+        width: 128px
+        height: 128px
+        margin: 0px auto
+
+      tr td
+        height: 80px
+        overflow: hidden
+        cursor: pointer
+        vertical-align: middle !important
+
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+  %body.container
+    .page-header
+      %h1 GitHub Dashboard
+
+    %form.form-inline
+      .form-group
+        %label From year:
+
+        %select.year.form-control
+          %option(value="2008") 2008
+          %option(value="2009") 2009
+          %option(value="2010") 2010
+          %option(value="2011") 2011
+          %option(value="2012") 2012
+          %option(value="2013") 2013
+          %option(value="2014") 2014
+
+      .form-group
+        %label From month:
+
+        %select.month.form-control
+          %option(value="01") January
+          %option(value="02") February
+          %option(value="03") March
+          %option(value="04") April
+          %option(value="05") May
+          %option(value="06") June
+          %option(value="07") July
+          %option(value="08") August
+          %option(value="09") September
+          %option(value="10") October
+          %option(value="11") November
+          %option(value="12") December
+
+      .form-group
+        %label From day:
+
+        %select.day.form-control
+          %option(value="01") 01
+          %option(value="02") 02
+          %option(value="03") 03
+          %option(value="04") 04
+          %option(value="05") 05
+          %option(value="06") 06
+          %option(value="07") 07
+          %option(value="08") 08
+          %option(value="09") 09
+          %option(value="10") 10
+          %option(value="11") 11
+          %option(value="12") 12
+          %option(value="13") 13
+          %option(value="14") 14
+          %option(value="15") 15
+          %option(value="16") 16
+          %option(value="17") 17
+          %option(value="18") 18
+          %option(value="19") 19
+          %option(value="20") 20
+          %option(value="21") 21
+          %option(value="22") 22
+          %option(value="23") 23
+          %option(value="24") 24
+          %option(value="25") 25
+          %option(value="26") 26
+          %option(value="27") 27
+          %option(value="28") 28
+          %option(value="29") 29
+          %option(value="30") 30
+          %option(value="31") 31
+
+      .form-group
+        %label Stars:
+
+        %select.stars.form-control
+          %option(value="10") 10
+          %option(value="50") 50
+          %option(value="100") 100
+          %option(value="500") 500
+          %option(value="1000") 1000
+          %option(value="5000") 5000
+          %option(value="10000") 10000
+
+      .form-group
+        %label Language:
+
+        %select.language.form-control
+          %option(value="") Any Language
+
+          %optgroup(label="Popular")
+            %option(value="ActionScript") ActionScript
+            %option(value="C") C
+            %option(value="C#") C#
+            %option(value="C++") C++
+            %option(value="Clojure") Clojure
+            %option(value="CoffeeScript") CoffeeScript
+            %option(value="Common Lisp") Common Lisp
+            %option(value="CSS") CSS
+            %option(value="Diff") Diff
+            %option(value="Emacs Lisp") Emacs Lisp
+            %option(value="Erlang") Erlang
+            %option(value="Haskell") Haskell
+            %option(value="HTML") HTML
+            %option(value="Java") Java
+            %option(value="JavaScript") JavaScript
+            %option(value="Lua") Lua
+            %option(value="Objective-C") Objective-C
+            %option(value="Perl") Perl
+            %option(value="PHP") PHP
+            %option(value="Python") Python
+            %option(value="Ruby") Ruby
+            %option(value="Scala") Scala
+            %option(value="Scheme") Scheme
+            %option(value="SQL") SQL
+
+          %optgroup(label="Everything else")
+            %option(value="ABAP") ABAP
+            %option(value="Ada") Ada
+            %option(value="Agda") Agda
+            %option(value="ANTLR") ANTLR
+            %option(value="ApacheConf") ApacheConf
+            %option(value="Apex") Apex
+            %option(value="AppleScript") AppleScript
+            %option(value="Arc") Arc
+            %option(value="Arduino") Arduino
+            %option(value="AsciiDoc") AsciiDoc
+            %option(value="ASP") ASP
+            %option(value="Assembly") Assembly
+            %option(value="Augeas") Augeas
+            %option(value="AutoHotkey") AutoHotkey
+            %option(value="AutoIt") AutoIt
+            %option(value="Awk") Awk
+            %option(value="Batchfile") Batchfile
+            %option(value="Befunge") Befunge
+            %option(value="BlitzBasic") BlitzBasic
+            %option(value="BlitzMax") BlitzMax
+            %option(value="Bluespec") Bluespec
+            %option(value="Boo") Boo
+            %option(value="Brainfuck") Brainfuck
+            %option(value="Brightscript") Brightscript
+            %option(value="Bro") Bro
+            %option(value="C-ObjDump") C-ObjDump
+            %option(value="C2hs Haskell") C2hs Haskell
+            %option(value="Ceylon") Ceylon
+            %option(value="ChucK") ChucK
+            %option(value="Clean") Clean
+            %option(value="CLIPS") CLIPS
+            %option(value="CMake") CMake
+            %option(value="COBOL") COBOL
+            %option(value="ColdFusion") ColdFusion
+            %option(value="Coq") Coq
+            %option(value="Cpp-ObjDump") Cpp-ObjDump
+            %option(value="Creole") Creole
+            %option(value="Crystal") Crystal
+            %option(value="Cucumber") Cucumber
+            %option(value="Cuda") Cuda
+            %option(value="Cython") Cython
+            %option(value="D") D
+            %option(value="D-ObjDump") D-ObjDump
+            %option(value="Darcs Patch") Darcs Patch
+            %option(value="Dart") Dart
+            %option(value="DCPU-16 ASM") DCPU-16 ASM
+            %option(value="DM") DM
+            %option(value="DOT") DOT
+            %option(value="Dylan") Dylan
+            %option(value="eC") eC
+            %option(value="Ecere Projects") Ecere Projects
+            %option(value="ECL") ECL
+            %option(value="edn") edn
+            %option(value="Eiffel") Eiffel
+            %option(value="Elixir") Elixir
+            %option(value="Elm") Elm
+            %option(value="F#") F#
+            %option(value="Factor") Factor
+            %option(value="Fancy") Fancy
+            %option(value="Fantom") Fantom
+            %option(value="fish") fish
+            %option(value="Forth") Forth
+            %option(value="FORTRAN") FORTRAN
+            %option(value="GAS") GAS
+            %option(value="Genshi") Genshi
+            %option(value="Gentoo Ebuild") Gentoo Ebuild
+            %option(value="Gentoo Eclass") Gentoo Eclass
+            %option(value="Gettext Catalog") Gettext Catalog
+            %option(value="GLSL") GLSL
+            %option(value="Glyph") Glyph
+            %option(value="Go") Go
+            %option(value="Gosu") Gosu
+            %option(value="Groff") Groff
+            %option(value="Groovy") Groovy
+            %option(value="Groovy Server Pages") Groovy Server Pages
+            %option(value="Haml") Haml
+            %option(value="Handlebars") Handlebars
+            %option(value="Haxe") Haxe
+            %option(value="HTML+Django") HTML+Django
+            %option(value="HTML+ERB") HTML+ERB
+            %option(value="HTML+PHP") HTML+PHP
+            %option(value="HTTP") HTTP
+            %option(value="IDL") IDL
+            %option(value="Idris") Idris
+            %option(value="INI") INI
+            %option(value="Inno Setup") Inno Setup
+            %option(value="Io") Io
+            %option(value="Ioke") Ioke
+            %option(value="IRC log") IRC log
+            %option(value="J") J
+            %option(value="Jade") Jade
+            %option(value="Java Server Pages") Java Server Pages
+            %option(value="JSON") JSON
+            %option(value="JSON5") JSON5
+            %option(value="Julia") Julia
+            %option(value="Kotlin") Kotlin
+            %option(value="KRL") KRL
+            %option(value="Lasso") Lasso
+            %option(value="Less") Less
+            %option(value="LFE") LFE
+            %option(value="LilyPond") LilyPond
+            %option(value="Literate Agda") Literate Agda
+            %option(value="Literate CoffeeScript") Literate CoffeeScript
+            %option(value="Literate Haskell") Literate Haskell
+            %option(value="LiveScript") LiveScript
+            %option(value="LLVM") LLVM
+            %option(value="Logos") Logos
+            %option(value="Logtalk") Logtalk
+            %option(value="M") M
+            %option(value="Makefile") Makefile
+            %option(value="Mako") Mako
+            %option(value="Markdown") Markdown
+            %option(value="Matlab") Matlab
+            %option(value="Max") Max
+            %option(value="MediaWiki") MediaWiki
+            %option(value="MiniD") MiniD
+            %option(value="Mirah") Mirah
+            %option(value="Monkey") Monkey
+            %option(value="Moocode") Moocode
+            %option(value="MoonScript") MoonScript
+            %option(value="mupad") mupad
+            %option(value="Myghty") Myghty
+            %option(value="Nemerle") Nemerle
+            %option(value="nesC") nesC
+            %option(value="NetLogo") NetLogo
+            %option(value="Nginx") Nginx
+            %option(value="Nimrod") Nimrod
+            %option(value="NSIS") NSIS
+            %option(value="Nu") Nu
+            %option(value="NumPy") NumPy
+            %option(value="ObjDump") ObjDump
+            %option(value="Objective-J") Objective-J
+            %option(value="OCaml") OCaml
+            %option(value="Omgrofl") Omgrofl
+            %option(value="ooc") ooc
+            %option(value="Opa") Opa
+            %option(value="OpenCL") OpenCL
+            %option(value="OpenEdge ABL") OpenEdge ABL
+            %option(value="Org") Org
+            %option(value="Oxygene") Oxygene
+            %option(value="Parrot") Parrot
+            %option(value="Parrot Assembly") Parrot Assembly
+            %option(value="Parrot Internal Representation") Parrot Internal Representation
+            %option(value="Pascal") Pascal
+            %option(value="Perl6") Perl6
+            %option(value="Pike") Pike
+            %option(value="Pod") Pod
+            %option(value="PogoScript") PogoScript
+            %option(value="PostScript") PostScript
+            %option(value="PowerShell") PowerShell
+            %option(value="Processing") Processing
+            %option(value="Prolog") Prolog
+            %option(value="Protocol Buffer") Protocol Buffer
+            %option(value="Puppet") Puppet
+            %option(value="Pure Data") Pure Data
+            %option(value="Python traceback") Python traceback
+            %option(value="QML") QML
+            %option(value="R") R
+            %option(value="Racket") Racket
+            %option(value="Ragel in Ruby Host") Ragel in Ruby Host
+            %option(value="Raw token data") Raw token data
+            %option(value="RDoc") RDoc
+            %option(value="REALbasic") REALbasic
+            %option(value="Rebol") Rebol
+            %option(value="Redcode") Redcode
+            %option(value="reStructuredText") reStructuredText
+            %option(value="RHTML") RHTML
+            %option(value="RMarkdown") RMarkdown
+            %option(value="RobotFramework") RobotFramework
+            %option(value="Rouge") Rouge
+            %option(value="Rust") Rust
+            %option(value="Sage") Sage
+            %option(value="Sass") Sass
+            %option(value="Scaml") Scaml
+            %option(value="Scilab") Scilab
+            %option(value="SCSS") SCSS
+            %option(value="Self") Self
+            %option(value="Shell") Shell
+            %option(value="Slash") Slash
+            %option(value="Smalltalk") Smalltalk
+            %option(value="Smarty") Smarty
+            %option(value="Squirrel") Squirrel
+            %option(value="Standard ML") Standard ML
+            %option(value="Stylus") Stylus
+            %option(value="SuperCollider") SuperCollider
+            %option(value="Tcl") Tcl
+            %option(value="Tcsh") Tcsh
+            %option(value="Tea") Tea
+            %option(value="TeX") TeX
+            %option(value="Textile") Textile
+            %option(value="TOML") TOML
+            %option(value="Turing") Turing
+            %option(value="Twig") Twig
+            %option(value="TXL") TXL
+            %option(value="TypeScript") TypeScript
+            %option(value="Unified Parallel C") Unified Parallel C
+            %option(value="UnrealScript") UnrealScript
+            %option(value="Vala") Vala
+            %option(value="Verilog") Verilog
+            %option(value="VHDL") VHDL
+            %option(value="VimL") VimL
+            %option(value="Visual Basic") Visual Basic
+            %option(value="Volt") Volt
+            %option(value="wisp") wisp
+            %option(value="xBase") xBase
+            %option(value="XC") XC
+            %option(value="XML") XML
+            %option(value="XProc") XProc
+            %option(value="XQuery") XQuery
+            %option(value="XS") XS
+            %option(value="XSLT") XSLT
+            %option(value="Xtend") Xtend
+            %option(value="YAML") YAML
+
+      .form-group
+        %label Page:
+
+        %input.page.form-control(value="1" type="number")
+
+    %h3.results-count
+
+    %table.table.table-hover
+      %thead
+        %th Name
+        %th Description
+        %th Language
+        %th Stars
+        %th Forks
+        %th Link
+
+      %tbody.results
+
+    %img.spinner(src="/spinner.gif")
+
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+    %script{src: "js/bootstrap.js"}
+
+    :coffee
+      (->
+        ls = window.localStorage
+
+        if ls
+          unless ls['init']
+            ls['init'] = true
+
+            ls['year']     = new Date().getFullYear()
+            ls['month']    = '01'
+            ls['day']      = '01'
+            ls['stars']    = '10'
+            ls['language'] = ''
+            ls['page']     = 1
+
+          $('.year').val     ls['year']
+          $('.month').val    ls['month']
+          $('.day').val      ls['day']
+          $('.stars').val    ls['stars']
+          $('.language').val ls['language']
+          $('.page').val     ls['page']
+
+        request = `null`
+
+        update = ->
+          if ls
+            ls['year']     = $('.year').val()
+            ls['month']    = $('.month').val()
+            ls['day']      = $('.day').val()
+            ls['stars']    = $('.stars').val()
+            ls['language'] = $('.language').val()
+            ls['page']     = $('.page').val()
+
+          results = $('.results').empty()
+          $('.results-count').empty()
+
+          $('.spinner').show()
+
+          year      = $('.year').val()
+          month     = $('.month').val()
+          day       = $('.day').val()
+          stars     = $('.stars').val()
+          language  = $('.language').val()
+          page      = $('.page').val()
+
+          language_query = if language == '' then '' else "+language:\#{language}"
+
+          query = "search/repositories?q=created:>\#{year}-\#{month}-\#{day}+stars:>\#{stars}\#{language_query}&page=\#{page}"
+
+          request.abort() if request
+
+          request = $.getJSON '/api/', query: query, (data) ->
+            $('.spinner').hide()
+
+            $('.results-count').text "\#{data.total_count} results found
+                                     (\#{ (parseInt(page) - 1) * 30 + 1 } -
+                                      \#{ (parseInt(page) - 1) * 30 + data.items.length })"
+
+            $.each data.items, (i, r) ->
+
+              results.append "<tr>
+                                <td>\#{r.name}</td>
+                                <td>\#{r.description}</td>
+                                <td>\#{r.language}</td>
+                                <td>\#{r.stargazers_count}</td>
+                                <td>\#{r.forks_count}</td>
+                                <td><a href='\#{r.html_url}'>\#{r.html_url}</a></td>
+                              </tr>"
+
+        update()
+
+        $('select, input').change ->
+          update()
+
+        $('form').submit (e) ->
+          e.preventDefault()
+          update()
+      )()
+
