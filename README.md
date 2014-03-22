@@ -2,6 +2,12 @@
 
 Simple application to view trends on github.
 
+### Usage
+
+    ./server 3001
+
+By default port 3000 will be used.
+
 ![screen](https://raw.github.com/speranskydanil/github-dashboard/master/screen.png)
 
 **Author (Speransky Danil):**
