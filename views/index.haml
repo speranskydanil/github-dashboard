@@ -9,6 +9,7 @@
     %title GitHub Dashboard
 
     %link{href: "css/bootstrap.css", rel: "stylesheet"}
+    %link{href: "css/message-library.css", rel: "stylesheet"}
 
     :sass
       form
@@ -397,6 +398,7 @@
 
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
     %script{src: "js/bootstrap.js"}
+    %script{src: "js/message-library.js"}
 
     :coffee
       (->
@@ -468,6 +470,11 @@
                                 <td>\#{r.forks_count}</td>
                                 <td><a href='\#{r.html_url}'>\#{r.html_url}</a></td>
                               </tr>"
+
+          request.error (data) ->
+            Message.alert
+              title: 'Error'
+              content: data.responseJSON.message
 
         update()
 
