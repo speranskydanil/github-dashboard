@@ -445,11 +445,13 @@
 
           language_query = if language == '' then '' else "+language:\#{language}"
 
-          query = "search/repositories?q=created:>\#{year}-\#{month}-\#{day}+stars:>\#{stars}\#{language_query}&page=\#{page}"
+          uri = "https://api.github.com/search/repositories\
+                 ?q=created:>\#{year}-\#{month}-\#{day}+\
+                 stars:>\#{stars}\#{language_query}&page=\#{page}"
 
           request.abort() if request
 
-          request = $.getJSON '/api/', query: query, (data) ->
+          request = $.getJSON uri, (data) ->
             $('.spinner').hide()
 
             $('.results-count').text "\#{data.total_count} results found
