@@ -2,7 +2,7 @@
 
 Simple application to view trends on github.
 
-## <a href="http://speranskydanil.github.io/github-dashboard/demo">DEMO</a>
+## <a href="http://speranskydanil.github.io/github-dashboard/demo.html">DEMO</a>
 
 ### Quick Start
 
