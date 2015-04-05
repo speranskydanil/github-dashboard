@@ -2,11 +2,14 @@
 
 Simple application to view trends on github.
 
-### Usage
+## <a href="http://speranskydanil.github.io/github-dashboard/demo">DEMO</a>
 
-    ./server 3001
+### Quick Start
 
-By default port 3000 will be used.
+1. Clone repository
+2. Install Gems (bundle install)
+3. Run Server (./server 3001)
+4. Open http://localhost:3001/
 
 ![screen](https://raw.github.com/speranskydanil/github-dashboard/master/screen.png)
 
