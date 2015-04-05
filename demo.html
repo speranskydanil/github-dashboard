@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>GitHub Dashboard</title>
+    <link href='assets/css/bootstrap.css' rel='stylesheet'>
+    <link href='assets/css/message-library.css' rel='stylesheet'>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        font-size: 16px; }
+      
+      .wrapper {
+        position: relative;
+        min-height: 100%; }
+      
+      .header {
+        padding: 20px;
+        background: #000055;
+        background-image: url(assets/bg.png);
+        font-size: 40px;
+        color: white;
+        text-align: center; }
+      
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: #eeeeff;
+        background-image: url(assets/bg.png);
+        text-align: center; }
+      
+      .container {
+        margin-bottom: 20px;
+        padding-bottom: 62px; }
+      
+      form {
+        margin-bottom: 20px;
+        padding: 12px 20px 10px;
+        font-size: 14px;
+        color: #333333;
+        background: #eeeeff;
+        background-image: url(assets/bg.png);
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px; }
+      
+      .form-group {
+        margin-right: 15px; }
+      
+      .form-control {
+        height: 26px;
+        margin-left: 5px;
+        padding: 2px 10px; }
+      
+      .language {
+        max-width: 140px; }
+      
+      .page {
+        max-width: 70px; }
+      
+      .results-count {
+        margin: 20px 0px;
+        padding: 0px;
+        font-size: 24px;
+        color: #555555; }
+      
+      .spinner {
+        display: block;
+        width: 128px;
+        height: 128px;
+        margin: 0px auto; }
+      
+      tr td {
+        height: 80px;
+        overflow: hidden;
+        cursor: pointer;
+        vertical-align: middle !important; }
+      
+      .table > .results > tr:hover > td {
+        background: #fcfcfc; }
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class='wrapper'>
+      <div class='header'>GitHub Dashboard</div>
+      <div class='container'>
+        <form class='form-inline'>
+          <div class='form-group'>
+            <label>From year:</label>
+            <select class='year form-control'>
+              <option value='2008'>2008</option>
+              <option value='2009'>2009</option>
+              <option value='2010'>2010</option>
+              <option value='2011'>2011</option>
+              <option value='2012'>2012</option>
+              <option value='2013'>2013</option>
+              <option value='2014'>2014</option>
+              <option value='2015'>2015</option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label>From month:</label>
+            <select class='month form-control'>
+              <option value='01'>January</option>
+              <option value='02'>February</option>
+              <option value='03'>March</option>
+              <option value='04'>April</option>
+              <option value='05'>May</option>
+              <option value='06'>June</option>
+              <option value='07'>July</option>
+              <option value='08'>August</option>
+              <option value='09'>September</option>
+              <option value='10'>October</option>
+              <option value='11'>November</option>
+              <option value='12'>December</option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label>From day:</label>
+            <select class='day form-control'>
+              <option value='01'>01</option>
+              <option value='02'>02</option>
+              <option value='03'>03</option>
+              <option value='04'>04</option>
+              <option value='05'>05</option>
+              <option value='06'>06</option>
+              <option value='07'>07</option>
+              <option value='08'>08</option>
+              <option value='09'>09</option>
+              <option value='10'>10</option>
+              <option value='11'>11</option>
+              <option value='12'>12</option>
+              <option value='13'>13</option>
+              <option value='14'>14</option>
+              <option value='15'>15</option>
+              <option value='16'>16</option>
+              <option value='17'>17</option>
+              <option value='18'>18</option>
+              <option value='19'>19</option>
+              <option value='20'>20</option>
+              <option value='21'>21</option>
+              <option value='22'>22</option>
+              <option value='23'>23</option>
+              <option value='24'>24</option>
+              <option value='25'>25</option>
+              <option value='26'>26</option>
+              <option value='27'>27</option>
+              <option value='28'>28</option>
+              <option value='29'>29</option>
+              <option value='30'>30</option>
+              <option value='31'>31</option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label>Stars:</label>
+            <select class='stars form-control'>
+              <option value='20'>20</option>
+              <option value='50'>50</option>
+              <option value='100'>100</option>
+              <option value='200'>200</option>
+              <option value='300'>300</option>
+              <option value='400'>400</option>
+              <option value='500'>500</option>
+              <option value='600'>600</option>
+              <option value='700'>700</option>
+              <option value='800'>800</option>
+              <option value='900'>900</option>
+              <option value='1000'>1000</option>
+              <option value='2000'>2000</option>
+              <option value='3000'>3000</option>
+              <option value='4000'>4000</option>
+              <option value='5000'>5000</option>
+              <option value='6000'>6000</option>
+              <option value='7000'>7000</option>
+              <option value='8000'>8000</option>
+              <option value='9000'>9000</option>
+              <option value='10000'>10000</option>
+              <option value='20000'>20000</option>
+              <option value='30000'>30000</option>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label>Language:</label>
+            <select class='language form-control'>
+              <option value=''>Any Language</option>
+              <optgroup label='Popular'>
+                <option value='ActionScript'>ActionScript</option>
+                <option value='C'>C</option>
+                <option value='C#'>C#</option>
+                <option value='C++'>C++</option>
+                <option value='Clojure'>Clojure</option>
+                <option value='CoffeeScript'>CoffeeScript</option>
+                <option value='Common Lisp'>Common Lisp</option>
+                <option value='CSS'>CSS</option>
+                <option value='Diff'>Diff</option>
+                <option value='Emacs Lisp'>Emacs Lisp</option>
+                <option value='Erlang'>Erlang</option>
+                <option value='Haskell'>Haskell</option>
+                <option value='HTML'>HTML</option>
+                <option value='Java'>Java</option>
+                <option value='JavaScript'>JavaScript</option>
+                <option value='Lua'>Lua</option>
+                <option value='Objective-C'>Objective-C</option>
+                <option value='Perl'>Perl</option>
+                <option value='PHP'>PHP</option>
+                <option value='Python'>Python</option>
+                <option value='Ruby'>Ruby</option>
+                <option value='Scala'>Scala</option>
+                <option value='Scheme'>Scheme</option>
+                <option value='SQL'>SQL</option>
+              </optgroup>
+              <optgroup label='Everything else'>
+                <option value='ABAP'>ABAP</option>
+                <option value='Ada'>Ada</option>
+                <option value='Agda'>Agda</option>
+                <option value='ANTLR'>ANTLR</option>
+                <option value='ApacheConf'>ApacheConf</option>
+                <option value='Apex'>Apex</option>
+                <option value='AppleScript'>AppleScript</option>
+                <option value='Arc'>Arc</option>
+                <option value='Arduino'>Arduino</option>
+                <option value='AsciiDoc'>AsciiDoc</option>
+                <option value='ASP'>ASP</option>
+                <option value='Assembly'>Assembly</option>
+                <option value='Augeas'>Augeas</option>
+                <option value='AutoHotkey'>AutoHotkey</option>
+                <option value='AutoIt'>AutoIt</option>
+                <option value='Awk'>Awk</option>
+                <option value='Batchfile'>Batchfile</option>
+                <option value='Befunge'>Befunge</option>
+                <option value='BlitzBasic'>BlitzBasic</option>
+                <option value='BlitzMax'>BlitzMax</option>
+                <option value='Bluespec'>Bluespec</option>
+                <option value='Boo'>Boo</option>
+                <option value='Brainfuck'>Brainfuck</option>
+                <option value='Brightscript'>Brightscript</option>
+                <option value='Bro'>Bro</option>
+                <option value='C-ObjDump'>C-ObjDump</option>
+                <option value='C2hs Haskell'>C2hs Haskell</option>
+                <option value='Ceylon'>Ceylon</option>
+                <option value='ChucK'>ChucK</option>
+                <option value='Clean'>Clean</option>
+                <option value='CLIPS'>CLIPS</option>
+                <option value='CMake'>CMake</option>
+                <option value='COBOL'>COBOL</option>
+                <option value='ColdFusion'>ColdFusion</option>
+                <option value='Coq'>Coq</option>
+                <option value='Cpp-ObjDump'>Cpp-ObjDump</option>
+                <option value='Creole'>Creole</option>
+                <option value='Crystal'>Crystal</option>
+                <option value='Cucumber'>Cucumber</option>
+                <option value='Cuda'>Cuda</option>
+                <option value='Cython'>Cython</option>
+                <option value='D'>D</option>
+                <option value='D-ObjDump'>D-ObjDump</option>
+                <option value='Darcs Patch'>Darcs Patch</option>
+                <option value='Dart'>Dart</option>
+                <option value='DCPU-16 ASM'>DCPU-16 ASM</option>
+                <option value='DM'>DM</option>
+                <option value='DOT'>DOT</option>
+                <option value='Dylan'>Dylan</option>
+                <option value='eC'>eC</option>
+                <option value='Ecere Projects'>Ecere Projects</option>
+                <option value='ECL'>ECL</option>
+                <option value='edn'>edn</option>
+                <option value='Eiffel'>Eiffel</option>
+                <option value='Elixir'>Elixir</option>
+                <option value='Elm'>Elm</option>
+                <option value='F#'>F#</option>
+                <option value='Factor'>Factor</option>
+                <option value='Fancy'>Fancy</option>
+                <option value='Fantom'>Fantom</option>
+                <option value='fish'>fish</option>
+                <option value='Forth'>Forth</option>
+                <option value='FORTRAN'>FORTRAN</option>
+                <option value='GAS'>GAS</option>
+                <option value='Genshi'>Genshi</option>
+                <option value='Gentoo Ebuild'>Gentoo Ebuild</option>
+                <option value='Gentoo Eclass'>Gentoo Eclass</option>
+                <option value='Gettext Catalog'>Gettext Catalog</option>
+                <option value='GLSL'>GLSL</option>
+                <option value='Glyph'>Glyph</option>
+                <option value='Go'>Go</option>
+                <option value='Gosu'>Gosu</option>
+                <option value='Groff'>Groff</option>
+                <option value='Groovy'>Groovy</option>
+                <option value='Groovy Server Pages'>Groovy Server Pages</option>
+                <option value='Haml'>Haml</option>
+                <option value='Handlebars'>Handlebars</option>
+                <option value='Haxe'>Haxe</option>
+                <option value='HTML+Django'>HTML+Django</option>
+                <option value='HTML+ERB'>HTML+ERB</option>
+                <option value='HTML+PHP'>HTML+PHP</option>
+                <option value='HTTP'>HTTP</option>
+                <option value='IDL'>IDL</option>
+                <option value='Idris'>Idris</option>
+                <option value='INI'>INI</option>
+                <option value='Inno Setup'>Inno Setup</option>
+                <option value='Io'>Io</option>
+                <option value='Ioke'>Ioke</option>
+                <option value='IRC log'>IRC log</option>
+                <option value='J'>J</option>
+                <option value='Jade'>Jade</option>
+                <option value='Java Server Pages'>Java Server Pages</option>
+                <option value='JSON'>JSON</option>
+                <option value='JSON5'>JSON5</option>
+                <option value='Julia'>Julia</option>
+                <option value='Kotlin'>Kotlin</option>
+                <option value='KRL'>KRL</option>
+                <option value='Lasso'>Lasso</option>
+                <option value='Less'>Less</option>
+                <option value='LFE'>LFE</option>
+                <option value='LilyPond'>LilyPond</option>
+                <option value='Literate Agda'>Literate Agda</option>
+                <option value='Literate CoffeeScript'>Literate CoffeeScript</option>
+                <option value='Literate Haskell'>Literate Haskell</option>
+                <option value='LiveScript'>LiveScript</option>
+                <option value='LLVM'>LLVM</option>
+                <option value='Logos'>Logos</option>
+                <option value='Logtalk'>Logtalk</option>
+                <option value='M'>M</option>
+                <option value='Makefile'>Makefile</option>
+                <option value='Mako'>Mako</option>
+                <option value='Markdown'>Markdown</option>
+                <option value='Matlab'>Matlab</option>
+                <option value='Max'>Max</option>
+                <option value='MediaWiki'>MediaWiki</option>
+                <option value='MiniD'>MiniD</option>
+                <option value='Mirah'>Mirah</option>
+                <option value='Monkey'>Monkey</option>
+                <option value='Moocode'>Moocode</option>
+                <option value='MoonScript'>MoonScript</option>
+                <option value='mupad'>mupad</option>
+                <option value='Myghty'>Myghty</option>
+                <option value='Nemerle'>Nemerle</option>
+                <option value='nesC'>nesC</option>
+                <option value='NetLogo'>NetLogo</option>
+                <option value='Nginx'>Nginx</option>
+                <option value='Nimrod'>Nimrod</option>
+                <option value='NSIS'>NSIS</option>
+                <option value='Nu'>Nu</option>
+                <option value='NumPy'>NumPy</option>
+                <option value='ObjDump'>ObjDump</option>
+                <option value='Objective-J'>Objective-J</option>
+                <option value='OCaml'>OCaml</option>
+                <option value='Omgrofl'>Omgrofl</option>
+                <option value='ooc'>ooc</option>
+                <option value='Opa'>Opa</option>
+                <option value='OpenCL'>OpenCL</option>
+                <option value='OpenEdge ABL'>OpenEdge ABL</option>
+                <option value='Org'>Org</option>
+                <option value='Oxygene'>Oxygene</option>
+                <option value='Parrot'>Parrot</option>
+                <option value='Parrot Assembly'>Parrot Assembly</option>
+                <option value='Parrot Internal Representation'>Parrot Internal Representation</option>
+                <option value='Pascal'>Pascal</option>
+                <option value='Perl6'>Perl6</option>
+                <option value='Pike'>Pike</option>
+                <option value='Pod'>Pod</option>
+                <option value='PogoScript'>PogoScript</option>
+                <option value='PostScript'>PostScript</option>
+                <option value='PowerShell'>PowerShell</option>
+                <option value='Processing'>Processing</option>
+                <option value='Prolog'>Prolog</option>
+                <option value='Protocol Buffer'>Protocol Buffer</option>
+                <option value='Puppet'>Puppet</option>
+                <option value='Pure Data'>Pure Data</option>
+                <option value='Python traceback'>Python traceback</option>
+                <option value='QML'>QML</option>
+                <option value='R'>R</option>
+                <option value='Racket'>Racket</option>
+                <option value='Ragel in Ruby Host'>Ragel in Ruby Host</option>
+                <option value='Raw token data'>Raw token data</option>
+                <option value='RDoc'>RDoc</option>
+                <option value='REALbasic'>REALbasic</option>
+                <option value='Rebol'>Rebol</option>
+                <option value='Redcode'>Redcode</option>
+                <option value='reStructuredText'>reStructuredText</option>
+                <option value='RHTML'>RHTML</option>
+                <option value='RMarkdown'>RMarkdown</option>
+                <option value='RobotFramework'>RobotFramework</option>
+                <option value='Rouge'>Rouge</option>
+                <option value='Rust'>Rust</option>
+                <option value='Sage'>Sage</option>
+                <option value='Sass'>Sass</option>
+                <option value='Scaml'>Scaml</option>
+                <option value='Scilab'>Scilab</option>
+                <option value='SCSS'>SCSS</option>
+                <option value='Self'>Self</option>
+                <option value='Shell'>Shell</option>
+                <option value='Slash'>Slash</option>
+                <option value='Smalltalk'>Smalltalk</option>
+                <option value='Smarty'>Smarty</option>
+                <option value='Squirrel'>Squirrel</option>
+                <option value='Standard ML'>Standard ML</option>
+                <option value='Stylus'>Stylus</option>
+                <option value='SuperCollider'>SuperCollider</option>
+                <option value='Tcl'>Tcl</option>
+                <option value='Tcsh'>Tcsh</option>
+                <option value='Tea'>Tea</option>
+                <option value='TeX'>TeX</option>
+                <option value='Textile'>Textile</option>
+                <option value='TOML'>TOML</option>
+                <option value='Turing'>Turing</option>
+                <option value='Twig'>Twig</option>
+                <option value='TXL'>TXL</option>
+                <option value='TypeScript'>TypeScript</option>
+                <option value='Unified Parallel C'>Unified Parallel C</option>
+                <option value='UnrealScript'>UnrealScript</option>
+                <option value='Vala'>Vala</option>
+                <option value='Verilog'>Verilog</option>
+                <option value='VHDL'>VHDL</option>
+                <option value='VimL'>VimL</option>
+                <option value='Visual Basic'>Visual Basic</option>
+                <option value='Volt'>Volt</option>
+                <option value='wisp'>wisp</option>
+                <option value='xBase'>xBase</option>
+                <option value='XC'>XC</option>
+                <option value='XML'>XML</option>
+                <option value='XProc'>XProc</option>
+                <option value='XQuery'>XQuery</option>
+                <option value='XS'>XS</option>
+                <option value='XSLT'>XSLT</option>
+                <option value='Xtend'>Xtend</option>
+                <option value='YAML'>YAML</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class='form-group'>
+            <label>Page:</label>
+            <input class='page form-control' type='number' value='1'>
+          </div>
+        </form>
+        <h3 class='results-count'></h3>
+        <table class='table table-hover'>
+          <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Language</th>
+            <th>Stars</th>
+            <th>Forks</th>
+            <th>Link</th>
+          </thead>
+          <tbody class='results'></tbody>
+        </table>
+        <img class='spinner' src='assets/spinner.gif'>
+      </div>
+      <div class='footer'>
+        <strong>Author (Speransky Danil):</strong>
+        <a href="http://dsperansky.info">Personal Page</a> /
+        <a href="http://ru.linkedin.com/in/speranskydanil/en">LinkedIn</a> /
+        <a href="https://github.com/speranskydanil?tab=repositories">GitHub</a> /
+        <a href="http://stackoverflow.com/users/1550807/speransky-danil">StackOverflow</a>
+      </div>
+    </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src='assets/js/bootstrap.js'></script>
+    <script src='assets/js/message-library.js'></script>
+    <script>
+      (function() {
+        (function() {
+          var ls, request, update;
+          ls = window.localStorage;
+          if (ls) {
+            if (!ls['init']) {
+              ls['init'] = true;
+              ls['year'] = new Date().getFullYear();
+              ls['month'] = '01';
+              ls['day'] = '01';
+              ls['stars'] = '20';
+              ls['language'] = '';
+              ls['page'] = 1;
+            }
+            $('.year').val(ls['year']);
+            $('.month').val(ls['month']);
+            $('.day').val(ls['day']);
+            $('.stars').val(ls['stars']);
+            $('.language').val(ls['language']);
+            $('.page').val(ls['page']);
+          }
+          request = null;
+          update = function() {
+            var day, language, language_query, month, page, results, stars, uri, year;
+            if (ls) {
+              ls['year'] = $('.year').val();
+              ls['month'] = $('.month').val();
+              ls['day'] = $('.day').val();
+              ls['stars'] = $('.stars').val();
+              ls['language'] = $('.language').val();
+              ls['page'] = $('.page').val();
+            }
+            results = $('.results').empty();
+            $('.results-count').empty();
+            $('.spinner').show();
+            year = $('.year').val();
+            month = $('.month').val();
+            day = $('.day').val();
+            stars = $('.stars').val();
+            language = $('.language').val();
+            page = $('.page').val();
+            language_query = language === '' ? '' : "+language:" + language;
+            uri = "https://api.github.com/search/repositories?q=created:>" + year + "-" + month + "-" + day + "+stars:>" + stars + language_query + "&page=" + page + "&per_page=100";
+            if (request) {
+              request.abort();
+            }
+            request = $.getJSON(uri, function(data) {
+              var offset;
+              $('.spinner').hide();
+              offset = (parseInt(page) - 1) * 100;
+              $('.results-count').text("" + data.total_count + " results found (" + (offset + 1) + " - " + (offset + data.items.length) + ")");
+              return $.each(data.items, function(i, r) {
+                return results.append("<tr> <td>" + (offset + i + 1) + "</td> <td>" + r.name + "</td> <td>" + r.description + "</td> <td>" + r.language + "</td> <td>" + r.stargazers_count + "</td> <td>" + r.forks_count + "</td> <td><a href='" + r.html_url + "'>" + r.html_url + "</a></td> </tr>");
+              });
+            });
+            return request.error(function(data) {
+              return Message.alert({
+                title: 'Error',
+                content: data.responseJSON.message
+              });
+            });
+          };
+          update();
+          $('select, input').change(function() {
+            return update();
+          });
+          return $('form').submit(function(e) {
+            e.preventDefault();
+            return update();
+          });
+        })();
+      
+      }).call(this);
+    </script>
+  </body>
+</html>
+
