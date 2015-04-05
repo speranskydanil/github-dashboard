@@ -63,6 +63,7 @@
           %option(value="2012") 2012
           %option(value="2013") 2013
           %option(value="2014") 2014
+          %option(value="2015") 2015
 
       .form-group
         %label From month:
@@ -121,13 +122,29 @@
         %label Stars:
 
         %select.stars.form-control
-          %option(value="10") 10
+          %option(value="20") 20
           %option(value="50") 50
           %option(value="100") 100
+          %option(value="200") 200
+          %option(value="300") 300
+          %option(value="400") 400
           %option(value="500") 500
+          %option(value="600") 600
+          %option(value="700") 700
+          %option(value="800") 800
+          %option(value="900") 900
           %option(value="1000") 1000
+          %option(value="2000") 2000
+          %option(value="3000") 3000
+          %option(value="4000") 4000
           %option(value="5000") 5000
+          %option(value="6000") 6000
+          %option(value="7000") 7000
+          %option(value="8000") 8000
+          %option(value="9000") 9000
           %option(value="10000") 10000
+          %option(value="20000") 20000
+          %option(value="30000") 30000
 
       .form-group
         %label Language:
@@ -385,6 +402,7 @@
 
     %table.table.table-hover
       %thead
+        %th #
         %th Name
         %th Description
         %th Language
@@ -449,20 +467,23 @@
 
           uri = "https://api.github.com/search/repositories\
                  ?q=created:>\#{year}-\#{month}-\#{day}+\
-                 stars:>\#{stars}\#{language_query}&page=\#{page}"
+                 stars:>\#{stars}\#{language_query}&page=\#{page}&per_page=100"
 
           request.abort() if request
 
           request = $.getJSON uri, (data) ->
             $('.spinner').hide()
 
+
+            offset = (parseInt(page) - 1) * 100
+
             $('.results-count').text "\#{data.total_count} results found
-                                     (\#{ (parseInt(page) - 1) * 30 + 1 } -
-                                      \#{ (parseInt(page) - 1) * 30 + data.items.length })"
+                                     (\#{ offset + 1 } -
+                                      \#{ offset + data.items.length })"
 
             $.each data.items, (i, r) ->
-
               results.append "<tr>
+                                <td>\#{offset + i + 1}</td>
                                 <td>\#{r.name}</td>
                                 <td>\#{r.description}</td>
                                 <td>\#{r.language}</td>
